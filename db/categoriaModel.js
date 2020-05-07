@@ -7,7 +7,10 @@ var SubcategoriaSchema = mongodb.Schema({
 var CategoriaSchema = mongodb.Schema({
     nombre: String,
     subcategorias: [SubcategoriaSchema],
-    codigo_tienda: String
+    codigo_tienda: {
+        type: String,
+        required: true
+    }
 });
 
 var Categoria = mongodb.model("categorias", CategoriaSchema);

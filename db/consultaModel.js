@@ -1,5 +1,6 @@
 var mongodb = require("./mongodb");
 var UsuarioSchema = require("./usuarioModel").UsuarioSchema;
+var ProductoSchema = require("./productoModel").ProductoSchema;
 
 var RespuestaSchema = mongodb.Schema({
     usuario: UsuarioSchema,
@@ -10,12 +11,21 @@ var RespuestaSchema = mongodb.Schema({
 var ConsultaSchema = mongodb.Schema({
     nombre: String,
     apellido: String,
-    email: String,
-    fecha: Date,
+    email: {
+        type: String,
+        required: true
+    },
+    fecha: { 
+        type: Date,
+        default: Date.now
+    },
     titulo: String,
     cuerpo: String,
-    codigo_tienda: String,
-    productoId: {type: mongodb.Schema.Types.ObjectId, ref: 'productos'},
+    codigo_tienda: {
+        type: String,
+        required: true
+    },
+    producto: ProductoSchema,
     respuesta: RespuestaSchema
 });
 

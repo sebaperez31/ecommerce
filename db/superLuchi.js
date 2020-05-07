@@ -58,7 +58,6 @@ function crearDB() {
 
     Producto.create({
         nombre : "Harina Leudante Blancaflor x 1 kg.",
-        codigo : "00001",
         precio : 68,
         descripcion : "",
         stock : 100,
@@ -70,7 +69,6 @@ function crearDB() {
 
     Producto.create({
         nombre : "Aceite oliva clasico Natura x 500 cc.",
-        codigo : "00002",
         precio : 334,
         descripcion : "",
         stock : 150,
@@ -82,7 +80,6 @@ function crearDB() {
 
     Producto.create({
         nombre : "Vino Tinto Cavas San Julian Clasico x 750 ml.",
-        codigo : "00003",
         precio : 90,
         descripcion : "Bodega La Rioja",
         stock : 30,
@@ -94,7 +91,6 @@ function crearDB() {
 
     var cerveza = new Producto();
     cerveza.nombre = "Cerveza Heineken en lata x 473 cc.";
-    cerveza.codigo = "00004";
     cerveza.precio = 70;
     cerveza.descripcion = "";
     cerveza.stock = 200;
@@ -115,7 +111,6 @@ function crearDB() {
 
     var vacio = new Producto();
     vacio.nombre = "Vacio x kg.";
-    vacio.codigo = "00005";
     vacio.precio = 452;
     vacio.descripcion = "";
     vacio.stock = 100;
@@ -137,7 +132,6 @@ function crearDB() {
 
     Producto.create({
         nombre : "Suprema de pollo x 1 kg.",
-        codigo : "00006",
         precio : 298,
         descripcion : "",
         stock : 300,
@@ -155,7 +149,6 @@ function crearDB() {
     sebastian.email = "sebaft23@hotmail.com";
     sebastian.password = "test";
     sebastian.telefono = "15-2098-1234";
-    sebastian.rol = usuarioModel.ROL_CLIENTE;
     sebastian.codigo_tienda = codigoSupermercadoLuchi;
     sebastian.direcciones = [ 
         {
@@ -230,22 +223,28 @@ function crearDB() {
 
     function CrearCompra(){
         if (vacioCreado && cervezaCreada && sebastianCreado) {
-            Compra.create({
-                fecha : "2012-04-23",
-                usuario : sebastian,
-                codigo_tienda : codigoSupermercadoLuchi,
-                items : [ 
-                    {
-                        producto : cerveza,
-                        cantidad : 2
-                    }, 
-                    {
-                        producto : vacio,
-                        cantidad : 1.5
-                    }
-                ],
-                total : 818,
-                direccion_de_entrega : sebastian.direcciones[0]
+            let compra = new Compra;
+            compra.fecha = "2012-04-23";
+            compra.usuario = sebastian;
+            compra.codigo_tienda = codigoSupermercadoLuchi;
+            compra.items = [ 
+                {
+                    producto : cerveza,
+                    cantidad : 2
+                }, 
+                {
+                    producto : vacio,
+                    cantidad : 1.5
+                }
+            ];
+            compra.direccion_de_entrega = sebastian.direcciones[0];
+            compra.save((err, doc) => {
+                if (err) {
+                    throw err;
+                }
+                else {
+                    console.log(doc);
+                }
             });
         }
     }
