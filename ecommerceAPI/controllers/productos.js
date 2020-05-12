@@ -1,12 +1,20 @@
 const ProductoModel = require('../models/productoModel').ProductoModel;
 
 module.exports = {
-    getAll : function(req, res, next) {
-        res.send('Todos los productos');
+    getAll : async function(req, res, next) {
+        let busqueda = {};
+        if (req.query.buscar){
+            busqueda.nombre = {
+                $regex : ".*" + req.query.buscar + ".*"
+            };
+        }
+        let productos = await ProductoModel.find(busqueda);
+        res.json(productos);
     },
 
-    getById : function(req, res, next) {
-        res.send('Producto x ID');
+    getById : async function(req, res, next) {
+        let producto = await ProductoModel.findById(req.params.id);
+        res.json(producto);
     },
 
     save : async function(req, res, next) {
@@ -19,11 +27,17 @@ module.exports = {
         producto.nombre_subcategoria = req.body.nombre_subcategoria;
         producto.codigo_tienda = req.body.codigo_tienda;
         producto.imagenes = req.body.imagenes;
-        let data = await producto.save();
-        res.json(data); 
+        let resultado = await producto.save();
+        res.json(resultado); 
     },
 
-    delete : function(req, res, next) {
-        res.send('Producto Borrado');
+    delete : async function(req, res, next) {
+        let resultado = await ProductoModel.remove({ _id: req.params.id });
+        res.json(resultado);
+    },
+
+    update : async function(req, res, next) {
+        let resultado = await ProductoModel.findByIdAndUpdate({ _id: req.params.id }, req.body);
+        res.json(resultado);
     }
 }
