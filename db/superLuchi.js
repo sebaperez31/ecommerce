@@ -58,6 +58,7 @@ function crearDB() {
 
     Producto.create({
         nombre : "Harina Leudante Blancaflor x 1 kg.",
+        codigo : "01",
         precio : 68,
         descripcion : "",
         stock : 100,
@@ -69,6 +70,7 @@ function crearDB() {
 
     Producto.create({
         nombre : "Aceite oliva clasico Natura x 500 cc.",
+        codigo : "02",
         precio : 334,
         descripcion : "",
         stock : 150,
@@ -80,6 +82,7 @@ function crearDB() {
 
     Producto.create({
         nombre : "Vino Tinto Cavas San Julian Clasico x 750 ml.",
+        codigo : "03",
         precio : 90,
         descripcion : "Bodega La Rioja",
         stock : 30,
@@ -91,6 +94,7 @@ function crearDB() {
 
     var cerveza = new Producto();
     cerveza.nombre = "Cerveza Heineken en lata x 473 cc.";
+    cerveza.codigo = "04";
     cerveza.precio = 70;
     cerveza.descripcion = "";
     cerveza.stock = 200;
@@ -111,6 +115,7 @@ function crearDB() {
 
     var vacio = new Producto();
     vacio.nombre = "Vacio x kg.";
+    vacio.codigo = "05";
     vacio.precio = 452;
     vacio.descripcion = "";
     vacio.stock = 100;
@@ -132,6 +137,7 @@ function crearDB() {
 
     Producto.create({
         nombre : "Suprema de pollo x 1 kg.",
+        codigo : "06",
         precio : 298,
         descripcion : "",
         stock : 300,

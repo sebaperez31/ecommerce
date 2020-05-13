@@ -20,6 +20,7 @@ module.exports = {
     save : async function(req, res, next) {
         let producto = new ProductoModel();
         producto.nombre = req.body.nombre;
+        producto.codigo = req.body.codigo;
         producto.precio = req.body.precio;
         producto.descripcion = req.body.descripcion;
         producto.stock = req.body.stock;

@@ -6,6 +6,7 @@ var ImagenSchema = mongodb.Schema({
 
 var ProductoSchema = mongodb.Schema({
     nombre: String,
+    codigo: String,
     precio: Number,
     descripcion: String,
     stock: Number,
@@ -17,6 +18,8 @@ var ProductoSchema = mongodb.Schema({
     },
     imagenes: [ImagenSchema]
 });
+
+ProductoSchema.index({codigo_tienda: 1, codigo: 1}, {unique: true});
 
 var Producto = mongodb.model("productos", ProductoSchema);
 

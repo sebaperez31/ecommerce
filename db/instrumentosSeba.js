@@ -47,6 +47,7 @@ function crearDB() {
 
     Producto.create({
         nombre : "Fender Precision Bass Special Edition Noir",
+        codigo : "FENDER_BASS_01",
         precio : 68000,
         descripcion : "El bajo Fender Precision Bass Noir Special Edition integra un micrófono split de bobinado simple con el clásico tono de Fender. Este modelo de edición especial cuenta con un cuerpo de Aliso, acabado en negro satinado y hardware cromado. Un mástil moderno en C ofrece una gran flexibilidad en todo con el diapasón construido en Pau Ferro. Como característica adicional cabe destacar las clavijas open gear, 20 trastes medium jumbo, cejuela de hueso sintético y mucho más.",
         stock : 3,
@@ -58,6 +59,7 @@ function crearDB() {
 
     Producto.create({
         nombre : "Gibson Les Paul 2017 Custom Std Historic 1959",
+        codigo : "GUITAR_GIBSON_01",
         precio : 125000,
         descripcion : "El Standard Historic 1959 Standard Les Paul de Gibson Custom ofrece el tono, el aspecto y la sensación del original '59, Sunburst Les Paul que marcó el estándar. Cuenta con una belleza artesanal, un tono Gibson vintage auténtico y detalles históricos, además de tinte de anilina históricamente preciso, la construcción del cuello con adhesivo oculto y la renombrada transferencia de sonido que viene con su cuello largo. Los detalles más importantes que hicieron que la leyenda original sea revivida ingeniosamente para una experiencia de juego vintage convincente.",
         stock : 2,
@@ -69,6 +71,7 @@ function crearDB() {
 
     Producto.create({
         nombre : "Armonica Diatónica Hohner Marine Band",
+        codigo : "HARM_HOHNER_01",
         precio : 3200,
         descripcion : "La Marine Band 1896 es la armónica de blues arquetípica. Casi sin cambios desde que fue patentada en 1896, este instrumento icónico encarna la profundidad real del blues como ninguna otra y es el punto de referencia contra la que se juzgan las demás. Inicialmente diseñada para la música folk europea, rápidamente se convirtió en una voz prominente del blues americano a principios del siglo 20, tocada por todos los armonicistas de esta era. Es el soundtrack de los corazones rotos y del baile de toda la noche, praderas interminables y clubs de noche. Como ninguna otra armónica, la Marine Band 1896 es una invitación a que te expreses en la música, una llave para desbloquear tu creatividad. Cuando descubrís esta pieza de historia musical viviente, no solo va a tocar blues. Vas a sentir el blues.",
         stock : 6,
@@ -80,6 +83,7 @@ function crearDB() {
 
     var platillos = new Producto();
     platillos.nombre = "Platillo Hi Hat P/ Bateria Zildjian Planet Z 14 Nueva Linea";
+    platillos.codigo = "HI_HAT_ZILD_01";
     platillos.precio = 9000;
     platillos.descripcion = "El PLZ14PR es un Hi-hat de 14 fabricado con un 70% de cobre y un 30% de zinc. La serie planet Z es ideal para principiantes, ofrece un precio económico y una excelente calidad. Va desde tonos limpios y nítidos cuando está abierto, a cortos y separados cuando está cerrado.";
     platillos.stock = 10;
@@ -100,6 +104,7 @@ function crearDB() {
 
     var bajoIbanez = new Producto();
     bajoIbanez.nombre = "Bajo Ibanez Tmb-100";
+    bajoIbanez.codigo = "IBANEZ_BASS_01"
     bajoIbanez.precio = 37000;
     bajoIbanez.descripcion = "Cantidad de trastes: 24. Tipo de madera del cuerpo: MACIZA. Tipo de madera del mástil: Caoba.";
     bajoIbanez.stock = 3;
