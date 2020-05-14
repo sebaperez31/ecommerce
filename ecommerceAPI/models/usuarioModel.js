@@ -1,17 +1,7 @@
 const mongoose = require("../bin/mongodb");
 const Schema = mongoose.Schema;
 
-var DireccionSchema = Schema({
-    calle: String,
-    numero: String,
-    piso: String,
-    departamento: String,
-    codigo_postal: String,
-    localidad: String,
-    partido: String,
-    provincia: String,
-    observaciones: String,
-});
+const DireccionSchema = require('./direccionModel').DireccionSchema;
 
 const ROL_ADMINISTRADOR = "administrador";
 const ROL_CLIENTE = "cliente";
@@ -50,8 +40,6 @@ var UsuarioModel = mongoose.model("usuarios", UsuarioSchema);
 module.exports.UsuarioModel = UsuarioModel; 
 
 module.exports.UsuarioSchema = UsuarioSchema;
-
-module.exports.DireccionSchema = DireccionSchema;
 
 module.exports.ROL_ADMINISTRADOR = ROL_ADMINISTRADOR;
 
