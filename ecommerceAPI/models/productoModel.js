@@ -17,7 +17,11 @@ var ProductoSchema = Schema({
         type: String,
         required: true
     },
-    imagenes: [ImagenSchema]
+    imagenes: [ImagenSchema],
+    destacado: {
+        type: Boolean,
+        default: false
+    }
 });
 
 // El codigo por ahora es opcional pero no quiero que este duplicado en una misma tienda

@@ -144,7 +144,8 @@ function crearDB() {
         nombre_categoria : "Carniceria",
         nombre_subcategoria : "Pollo",
         imagenes : [{nombre:"supremaPollo.bmp"}],
-        codigo_tienda: codigoSupermercadoLuchi
+        codigo_tienda: codigoSupermercadoLuchi,
+        destacado: true
     });
 
     // CLIENTES

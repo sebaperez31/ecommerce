@@ -16,7 +16,11 @@ var ProductoSchema = mongodb.Schema({
         type: String,
         required: true
     },
-    imagenes: [ImagenSchema]
+    imagenes: [ImagenSchema],
+    destacado: {
+        type: Boolean,
+        default: false
+    }
 });
 
 ProductoSchema.index({codigo_tienda: 1, codigo: 1}, {unique: true});

@@ -15,6 +15,18 @@ module.exports = {
         res.json(resultado); 
     },
 
-    login : function(req, res, next) {
+    login : async function(req, res, next) {
+        let usuario = await UsuarioModel.findOne({ 
+            email : req.body.email,
+            password : req.body.password
+        });
+        if (usuario){
+            // OK
+            res.status(200).json({ message : "Login exitoso", data : null});
+        }
+        else{
+            // Unauthorized Error    
+            res.status(401).json({ message : "Usuario y/o password incorrecto", data : null});
+        }
     }
 }

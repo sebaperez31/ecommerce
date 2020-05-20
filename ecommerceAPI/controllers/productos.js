@@ -28,6 +28,7 @@ module.exports = {
         producto.nombre_subcategoria = req.body.nombre_subcategoria;
         producto.codigo_tienda = req.body.codigo_tienda;
         producto.imagenes = req.body.imagenes;
+        producto.destacado = req.body.destacado;
         let resultado = await producto.save();
         res.json(resultado); 
     },
@@ -40,5 +41,10 @@ module.exports = {
     update : async function(req, res, next) {
         let resultado = await ProductoModel.findByIdAndUpdate({ _id: req.params.id }, req.body);
         res.json(resultado);
+    },
+
+    getDestacados: async function(req, res, next) {
+        let productos = await ProductoModel.find({ destacado: true});
+        res.json(productos);
     }
 }
