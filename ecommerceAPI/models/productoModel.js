@@ -27,6 +27,8 @@ var ProductoSchema = Schema({
 // El codigo por ahora es opcional pero no quiero que este duplicado en una misma tienda
 ProductoSchema.index({codigo_tienda: 1, codigo: 1}, {unique: true});
 
+ProductoSchema.plugin(mongoose.mongoosePaginate);
+
 module.exports.ProductoModel = mongoose.model("productos", ProductoSchema);
 
 module.exports.ProductoSchema = ProductoSchema;

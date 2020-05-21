@@ -18,7 +18,8 @@ module.exports = {
     login : async function(req, res, next) {
         let usuario = await UsuarioModel.findOne({ 
             email : req.body.email,
-            password : req.body.password
+            password : req.body.password,
+            codigo_tienda : req.body.codigo_tienda
         });
         if (usuario){
             // OK

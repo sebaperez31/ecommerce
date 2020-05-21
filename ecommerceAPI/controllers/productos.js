@@ -8,7 +8,10 @@ module.exports = {
                 $regex : ".*" + req.query.buscar + ".*"
             };
         }
-        let productos = await ProductoModel.find(busqueda);
+        let productos = await ProductoModel.paginate(busqueda,{
+            limit : 5,
+            page : req.query.page ? req.query.page : 1
+        });
         res.json(productos);
     },
 
