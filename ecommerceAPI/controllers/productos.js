@@ -1,53 +1,69 @@
 const ProductoModel = require('../models/productoModel').ProductoModel;
+const handleErrors = require('./handleErrors');
+
+const getAll = async function(req, res, next) {
+    let busqueda = {};
+    if (req.query.buscar){
+        busqueda.nombre = {
+            $regex : ".*" + req.query.buscar + ".*"
+        };
+    }
+    let productos = await ProductoModel.paginate(busqueda,{
+        limit : 5,
+        page : req.query.page ? req.query.page : 1
+    });
+    res.json(productos);
+}
+
+const getById = async function(req, res, next) {
+    let producto = await ProductoModel.findById(req.params.id);
+    res.json(producto);
+}
+
+const save = async function(req, res, next) {
+    let producto = new ProductoModel();
+    producto.nombre = req.body.nombre;
+    producto.codigo = req.body.codigo;
+    producto.precio = req.body.precio;
+    producto.descripcion = req.body.descripcion;
+    producto.stock = req.body.stock;
+    producto.nombre_categoria = req.body.nombre_categoria;
+    producto.nombre_subcategoria = req.body.nombre_subcategoria;
+    producto.codigo_tienda = req.body.codigo_tienda;
+    producto.imagenes = req.body.imagenes;
+    producto.destacado = req.body.destacado;
+    let resultado = await producto.save();
+    res.json(resultado); 
+}
+
+const del = async function(req, res, next) {
+    let resultado = await ProductoModel.remove({ _id: req.params.id });
+    res.json(resultado);
+}
+
+const update = async function(req, res, next) {
+    let resultado = await ProductoModel.findByIdAndUpdate({ _id: req.params.id }, req.body);
+    res.json(resultado);
+}
+
+const getDestacados = async function(req, res, next) {
+    let destacados = await ProductoModel.paginate({ destacado: true},{
+        limit : 5,
+        page : req.query.page ? req.query.page : 1
+    });
+    res.json(destacados);
+}
 
 module.exports = {
-    getAll : async function(req, res, next) {
-        let busqueda = {};
-        if (req.query.buscar){
-            busqueda.nombre = {
-                $regex : ".*" + req.query.buscar + ".*"
-            };
-        }
-        let productos = await ProductoModel.paginate(busqueda,{
-            limit : 5,
-            page : req.query.page ? req.query.page : 1
-        });
-        res.json(productos);
-    },
+    getAll : handleErrors(getAll),
 
-    getById : async function(req, res, next) {
-        let producto = await ProductoModel.findById(req.params.id);
-        res.json(producto);
-    },
+    getById : handleErrors(getById),
 
-    save : async function(req, res, next) {
-        let producto = new ProductoModel();
-        producto.nombre = req.body.nombre;
-        producto.codigo = req.body.codigo;
-        producto.precio = req.body.precio;
-        producto.descripcion = req.body.descripcion;
-        producto.stock = req.body.stock;
-        producto.nombre_categoria = req.body.nombre_categoria;
-        producto.nombre_subcategoria = req.body.nombre_subcategoria;
-        producto.codigo_tienda = req.body.codigo_tienda;
-        producto.imagenes = req.body.imagenes;
-        producto.destacado = req.body.destacado;
-        let resultado = await producto.save();
-        res.json(resultado); 
-    },
+    save : handleErrors(save),
 
-    delete : async function(req, res, next) {
-        let resultado = await ProductoModel.remove({ _id: req.params.id });
-        res.json(resultado);
-    },
+    delete : handleErrors(del),
 
-    update : async function(req, res, next) {
-        let resultado = await ProductoModel.findByIdAndUpdate({ _id: req.params.id }, req.body);
-        res.json(resultado);
-    },
+    update : handleErrors(update),
 
-    getDestacados: async function(req, res, next) {
-        let productos = await ProductoModel.find({ destacado: true});
-        res.json(productos);
-    }
+    getDestacados: handleErrors(getDestacados)
 }
