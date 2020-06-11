@@ -5,6 +5,6 @@ npm install -g nodemon // global para que se pueda usar desde la consola
 nodemon npm start  // arranca el server
 npm install mongoose // base de datos
 
-
+ng new ecommerceUI
 
 

@@ -1,0 +1,23 @@
+<form [formGroup]="formulario" (ngSubmit)="registrar()">
+  <div>
+    <label>Nombre</label>
+    <input type="text" formControlName="nombre"/>
+  </div>
+  <div>
+    <label>Apellido</label>
+    <input type="text" formControlName="apellido"/>
+  </div>
+  <div>
+    <label>Email</label>
+    <input type="email" formControlName="email"/>
+  </div>
+  <div>
+    <label>Contraseña</label>
+    <input type="text" formControlName="password"/>
+  </div>
+  <div>
+    <label>Telefono</label>
+    <input type="text" formControlName="telefono"/>
+  </div>
+  <input [disabled]="formulario.invalid" type="submit" value="Registrarme"/>
+</form>
