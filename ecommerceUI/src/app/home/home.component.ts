@@ -6,12 +6,14 @@ import { ProductosService } from '../services/productos.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   productos = [];
 
-  constructor(private prod:ProductosService) {
-    this.prod.getProductos().subscribe(data => {
-      this.productos = data.docs;
+  constructor(private productosService:ProductosService) {
+    this.productosService.getProductos().subscribe(data => {
+      console.log(data);
+      this.productos = data as object[];
     });
   }
 

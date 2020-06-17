@@ -5,8 +5,15 @@ var Usuario = usuarioModel.Usuario;
 var Compra = require("./compraModel").Compra;
 var Tienda = require("./tiendaModel").Tienda;
 var Consulta = require("./consultaModel").Consulta;
+var fs = require('fs');
 
 // INSTRUMENTOS SEBA
+
+function getImagen(path){
+    let imagen = fs.readFileSync(path);
+    let buff = new Buffer(imagen);
+    return buff.toString('base64');
+}
 
 function crearDB() {
     
@@ -89,7 +96,11 @@ function crearDB() {
     platillos.stock = 10;
     platillos.nombre_categoria = "Percusion";
     platillos.nombre_subcategoria = "Platillos";
-    platillos.imagenes = [{nombre:"hihatZildPlanetZ.bmp"}];
+    platillos.imagenes = [{   
+        nombre : 'platillos.png',
+        data : getImagen('./platillos.png'),
+        contentType : 'image/png'
+    }];
     platillos.codigo_tienda = codigoInstrumentosSeba;
     var platillosCreados = false;
     platillos.save((err,product) => {

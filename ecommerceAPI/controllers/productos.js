@@ -8,10 +8,10 @@ const getAll = async function(req, res, next) {
             $regex : ".*" + req.query.buscar + ".*"
         };
     }
-    let productos = await ProductoModel.paginate(busqueda,{
-        limit : 5,
-        page : req.query.page ? req.query.page : 1
-    });
+    if (req.query.codigo_tienda){
+        busqueda.codigo_tienda = req.query.codigo_tienda;
+    }
+    let productos = await ProductoModel.find(busqueda);
     res.json(productos);
 }
 
@@ -47,10 +47,11 @@ const update = async function(req, res, next) {
 }
 
 const getDestacados = async function(req, res, next) {
-    let destacados = await ProductoModel.paginate({ destacado: true},{
-        limit : 5,
-        page : req.query.page ? req.query.page : 1
-    });
+    let busqueda = { destacado : true };
+    if (req.query.codigo_tienda){
+        busqueda.codigo_tienda = req.query.codigo_tienda;
+    }
+    let destacados = await ProductoModel.find(busqueda);
     res.json(destacados);
 }
 

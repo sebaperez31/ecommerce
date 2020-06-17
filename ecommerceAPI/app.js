@@ -11,6 +11,8 @@ var tiendasRouter = require('./routes/tiendas');
 var categoriasRouter = require('./routes/categorias');
 var comprasRouter = require('./routes/compras');
 
+const jwt = require('jsonwebtoken');
+
 var app = express();
 
 // view engine setup
@@ -40,10 +42,23 @@ app.options("/*", function(req, res, next){
 
 app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
-app.use('/productos', productosRouter);
+app.use('/productos', validarUsuario, productosRouter);
 app.use('/tiendas', tiendasRouter);
 app.use('/categorias', categoriasRouter);
 app.use('/compras', comprasRouter);
+
+// Validacion de user por token
+function validarUsuario(req,res,next){
+  jwt.verify(req.headers['x-access-token'], '123456' ,function(err,decoded){
+    if(err){
+      res.status(401).json({message:err.message})
+    }else{
+      console.log(decoded)
+      req.body.userToken = decoded
+      next();
+    }
+  })
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

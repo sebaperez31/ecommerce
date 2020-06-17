@@ -2,7 +2,9 @@ const mongoose = require("../bin/mongodb");
 const Schema = mongoose.Schema;
 
 var ImagenSchema = Schema({
-    nombre: String
+    nombre: String,
+    data: String, 
+    contentType: String
 });
 
 var ProductoSchema = Schema({

@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuariosService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private config:ConfigService) { }
 
   registrar(data){
-    return this.http.post("http://localhost:3000/usuarios/registro", data);
+    data["codigo_tienda"] = this.config.codigoTienda;
+    return this.http.post(this.config.apiUrl + 'usuarios/registro', data);
+  }
+
+  login(data){
+    data["codigo_tienda"] = this.config.codigoTienda;
+    return this.http.post(this.config.apiUrl + 'usuarios/login', data);
   }
 }

@@ -6,12 +6,20 @@ import { AppComponent } from './app.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { MenuComponent } from './layout/menu/menu.component';
+import { ProductoComponent } from './components/producto/producto.component';
+import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistroComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    MenuComponent,
+    ProductoComponent,
+    ProductoDetalleComponent
   ],
   imports: [
     BrowserModule,

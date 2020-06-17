@@ -1,0 +1,11 @@
+<form [formGroup]="formulario" (ngSubmit)="login()">
+  <div>
+    <label>Email</label>
+    <input type="email" formControlName="email"/>
+  </div>
+  <div>
+    <label>Contraseña</label>
+    <input type="text" formControlName="password"/>
+  </div>
+  <input [disabled]="formulario.invalid" type="submit" value="Login"/>
+</form>

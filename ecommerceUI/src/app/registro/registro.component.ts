@@ -10,7 +10,7 @@ import { UsuariosService } from '../services/usuarios.service';
 export class RegistroComponent implements OnInit {
   formulario:FormGroup;
 
-  constructor(private fb:FormBuilder, private usuarios:UsuariosService) {
+  constructor(private fb:FormBuilder, private usuariosService:UsuariosService) {
     this.formulario = this.fb.group({
       nombre   : ['', [Validators.required]],
       apellido : ['', [Validators.required]],
@@ -25,7 +25,7 @@ export class RegistroComponent implements OnInit {
 
   registrar() {
     console.log(this.formulario.value);
-    this.usuarios.registrar(this.formulario.value).subscribe(data => {
+    this.usuariosService.registrar(this.formulario.value).subscribe(data => {
       console.log(data);
     });
   }
