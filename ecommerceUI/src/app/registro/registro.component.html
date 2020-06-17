@@ -3,17 +3,30 @@
     <label>Nombre</label>
     <input type="text" formControlName="nombre"/>
   </div>
+  <div *ngIf="formulario.get('nombre').dirty && formulario.get('nombre').errors">
+    <p *ngIf="formulario.get('nombre').hasError('required')">El campo es obligatorio</p>
+  </div>
   <div>
     <label>Apellido</label>
     <input type="text" formControlName="apellido"/>
+  </div>
+  <div *ngIf="formulario.get('apellido').dirty && formulario.get('apellido').errors">
+    <p *ngIf="formulario.get('apellido').hasError('required')">El campo es obligatorio</p>
   </div>
   <div>
     <label>Email</label>
     <input type="email" formControlName="email"/>
   </div>
+  <div *ngIf="formulario.get('email').dirty && formulario.get('email').errors">
+    <p *ngIf="formulario.get('email').hasError('required')">El campo es obligatorio</p>
+    <p *ngIf="formulario.get('email').hasError('email')">El campo debe ser un correo electronico valido</p>
+  </div>
   <div>
     <label>Contraseña</label>
     <input type="text" formControlName="password"/>
+  </div>
+  <div *ngIf="formulario.get('password').dirty && formulario.get('password').errors">
+    <p *ngIf="formulario.get('password').hasError('required')">El campo es obligatorio</p>
   </div>
   <div>
     <label>Telefono</label>

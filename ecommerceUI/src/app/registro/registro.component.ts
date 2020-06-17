@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -10,12 +11,13 @@ import { UsuariosService } from '../services/usuarios.service';
 export class RegistroComponent implements OnInit {
   formulario:FormGroup;
 
-  constructor(private fb:FormBuilder, private usuariosService:UsuariosService) {
+  constructor(private fb:FormBuilder, private usuariosService:UsuariosService,
+    private router:Router) {
     this.formulario = this.fb.group({
       nombre   : ['', [Validators.required]],
       apellido : ['', [Validators.required]],
       email    : ['', [Validators.required, Validators.email]],
-      password : ['', [Validators.required, Validators.minLength(8)]],
+      password : ['', [Validators.required]],
       telefono : ['', []],
     });
   }
@@ -25,8 +27,21 @@ export class RegistroComponent implements OnInit {
 
   registrar() {
     console.log(this.formulario.value);
-    this.usuariosService.registrar(this.formulario.value).subscribe(data => {
-      console.log(data);
-    });
+    this.usuariosService.registrar(this.formulario.value).subscribe(
+      data => {
+        alert('Registro exitoso!');
+        this.router.navigate(["login"]);
+      },
+      error => {
+        let mensajeError;
+        if (error.status === 409){
+          // Conflict
+          mensajeError = 'Ya existe un usuario registrado con ese correo electronico.';
+        }
+        else {
+          mensajeError = 'No se pudo registrar el usuario.';
+        }
+        alert(mensajeError);
+      });
   }
 }

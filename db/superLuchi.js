@@ -64,7 +64,6 @@ function crearDB() {
         stock : 100,
         nombre_categoria : "Almacen",
         nombre_subcategoria : "Harinas",
-        imagenes : [{nombre:"blancaflor1.jpg"}, {nombre:"blancaflor2.jpg"}],
         codigo_tienda: codigoSupermercadoLuchi
     });
 
@@ -76,7 +75,6 @@ function crearDB() {
         stock : 150,
         nombre_categoria : "Almacen",
         nombre_subcategoria : "Aceites y condimentos",
-        imagenes : [{nombre:"naturaOliva500.jpg"}],
         codigo_tienda: codigoSupermercadoLuchi
     });
 
@@ -88,7 +86,6 @@ function crearDB() {
         stock : 30,
         nombre_categoria : "Bebidas",
         nombre_subcategoria : "Vinos",
-        imagenes : [{nombre:"cabasTintoSJ750.jpg"}],
         codigo_tienda: codigoSupermercadoLuchi
     });
 
@@ -100,7 +97,6 @@ function crearDB() {
     cerveza.stock = 200;
     cerveza.nombre_categoria = "Bebidas";
     cerveza.nombre_subcategoria = "Cervezas";
-    cerveza.imagenes = [{nombre:"heinekenLata473.bmp"}];
     cerveza.codigo_tienda = codigoSupermercadoLuchi;
     var cervezaCreada = false;
     cerveza.save((err,product) => {
@@ -121,7 +117,6 @@ function crearDB() {
     vacio.stock = 100;
     vacio.nombre_categoria = "Carniceria";
     vacio.nombre_subcategoria = "Vacuna";
-    vacio.imagenes = [{nombre:"vacio.bmp"}];
     vacio.codigo_tienda = codigoSupermercadoLuchi;
     var vacioCreado = false;
     vacio.save((err,product) => {
@@ -143,7 +138,6 @@ function crearDB() {
         stock : 300,
         nombre_categoria : "Carniceria",
         nombre_subcategoria : "Pollo",
-        imagenes : [{nombre:"supremaPollo.bmp"}],
         codigo_tienda: codigoSupermercadoLuchi,
         destacado: true
     });

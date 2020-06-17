@@ -60,7 +60,7 @@ function crearDB() {
         stock : 3,
         nombre_categoria : "Bajos",
         nombre_subcategoria : "Electricos",
-        imagenes : [{nombre:"bassfender1.jpg"}, {nombre:"bassfender2.jpg"}],
+        imagenes : [{nombre:"images/bassfender1.jpg"}],
         codigo_tienda: codigoInstrumentosSeba
     });
 
@@ -72,7 +72,7 @@ function crearDB() {
         stock : 2,
         nombre_categoria : "Guitarras",
         nombre_subcategoria : "Electricas",
-        imagenes : [{nombre:"gibsonlespoul.jpg"}],
+        imagenes : [{nombre:"images/gibsonlespoul.jpg"}],
         codigo_tienda: codigoInstrumentosSeba
     });
 
@@ -84,7 +84,7 @@ function crearDB() {
         stock : 6,
         nombre_categoria : "Vientos",
         nombre_subcategoria : "Armonicas",
-        imagenes : [{nombre:"hohnerMarineBand.jpg"}],
+        imagenes : [{nombre:"images/hohnerMarineBand.jpg"}],
         codigo_tienda: codigoInstrumentosSeba
     });
 
@@ -97,9 +97,7 @@ function crearDB() {
     platillos.nombre_categoria = "Percusion";
     platillos.nombre_subcategoria = "Platillos";
     platillos.imagenes = [{   
-        nombre : 'platillos.png',
-        data : getImagen('./platillos.png'),
-        contentType : 'image/png'
+        nombre : 'images/platillos.png',
     }];
     platillos.codigo_tienda = codigoInstrumentosSeba;
     var platillosCreados = false;
@@ -121,7 +119,7 @@ function crearDB() {
     bajoIbanez.stock = 3;
     bajoIbanez.nombre_categoria = "Bajos";
     bajoIbanez.nombre_subcategoria = "Electricos";
-    bajoIbanez.imagenes = [{nombre:"bajoIbanezTmb100.bmp"}];
+    bajoIbanez.imagenes = [{nombre:"images/bajoIbanezTmb100.jpg"}];
     bajoIbanez.codigo_tienda = codigoInstrumentosSeba;
     var bajoIbanezCreado = false;
     bajoIbanez.save((err,product) => {

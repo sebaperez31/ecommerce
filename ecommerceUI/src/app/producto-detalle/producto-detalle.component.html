@@ -1,6 +1,8 @@
 <div>{{producto.nombre}}</div>
 <div>{{producto.codigo}}</div>
-<img [src]='imagen'/>
+<div *ngIf="imagen">
+  <img src="{{imagen}}">
+<div>
 <div>{{producto.descripcion}}</div>
 <div>{{producto.precio | currency}}</div>
 <div>{{producto.nombre_categoria}} / {{producto.nombre_subcategoria}}</div>

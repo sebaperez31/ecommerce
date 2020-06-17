@@ -1,4 +1,4 @@
 <button (click)=home()>Home</button>
 <button (click)=login() *ngIf=!isLogged()>Login</button>
 <button (click)=logout() *ngIf=isLogged()>Logout</button>
-<button (click)=registro()>Registro</button>
+<button (click)=registro() *ngIf=!isLogged()>Registro</button>

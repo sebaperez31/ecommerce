@@ -1,9 +1,7 @@
 var mongodb = require("./mongodb");
 
 var ImagenSchema = mongodb.Schema({
-    nombre: String,
-    data: String, 
-    contentType: String
+    nombre: String
 });
 
 var ProductoSchema = mongodb.Schema({

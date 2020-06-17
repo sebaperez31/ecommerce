@@ -10,11 +10,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   formulario:FormGroup;
+  errorLogeo:boolean;
 
   constructor(private fb:FormBuilder, private usuariosService:UsuariosService, private router:Router) {
+    this.errorLogeo = false;
     this.formulario = this.fb.group({
       email    : ['', [Validators.required, Validators.email]],
-      password : ['', [Validators.required, Validators.minLength(8)]]
+      password : ['', [Validators.required]]
     });
   }
 
@@ -22,9 +24,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.usuariosService.login(this.formulario.value).subscribe(data => {
-      localStorage.setItem('token', data["token"]);
-      this.router.navigate(['']);
+    this.usuariosService.login(this.formulario.value).subscribe(
+      data => {
+        localStorage.setItem('token', data["token"]);
+        this.errorLogeo = false;
+        this.router.navigate(['']);
+    },
+      error => {
+        alert("Usuario y/o password incorrectos.");
+        this.errorLogeo = true;
     });
   }
 }
