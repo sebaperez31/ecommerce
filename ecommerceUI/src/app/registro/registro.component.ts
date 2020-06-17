@@ -10,16 +10,17 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
   formulario:FormGroup;
+  mensajeError:String = '';
 
   constructor(private fb:FormBuilder, private usuariosService:UsuariosService,
     private router:Router) {
-    this.formulario = this.fb.group({
-      nombre   : ['', [Validators.required]],
-      apellido : ['', [Validators.required]],
-      email    : ['', [Validators.required, Validators.email]],
-      password : ['', [Validators.required]],
-      telefono : ['', []],
-    });
+      this.formulario = this.fb.group({
+        nombre   : ['', [Validators.required]],
+        apellido : ['', [Validators.required]],
+        email    : ['', [Validators.required, Validators.email]],
+        password : ['', [Validators.required]],
+        telefono : ['', []],
+      });
   }
 
   ngOnInit() {
@@ -29,19 +30,16 @@ export class RegistroComponent implements OnInit {
     console.log(this.formulario.value);
     this.usuariosService.registrar(this.formulario.value).subscribe(
       data => {
-        alert('Registro exitoso!');
-        this.router.navigate(["login"]);
+        this.router.navigate(['login']);
       },
       error => {
-        let mensajeError;
         if (error.status === 409){
           // Conflict
-          mensajeError = 'Ya existe un usuario registrado con ese correo electronico.';
+          this.mensajeError = 'Ya existe un usuario registrado con ese correo electronico.';
         }
         else {
-          mensajeError = 'No se pudo registrar el usuario.';
+          this.mensajeError = 'No se pudo registrar el usuario.';
         }
-        alert(mensajeError);
       });
   }
 }

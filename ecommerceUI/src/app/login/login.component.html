@@ -15,4 +15,7 @@
     <p *ngIf="formulario.get('password').hasError('required')">El campo es obligatorio</p>
   </div>
   <input [disabled]="formulario.invalid" type="submit" value="Login"/>
+  <div *ngIf="errorLogeo">
+    <p>Usuario y/o password incorrectos.</p>
+ </div>
 </form>

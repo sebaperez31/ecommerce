@@ -33,4 +33,7 @@
     <input type="text" formControlName="telefono"/>
   </div>
   <input [disabled]="formulario.invalid" type="submit" value="Registrarme"/>
+  <div *ngIf="mensajeError.length > 0">
+    <p>{{mensajeError}}</p>
+ </div>
 </form>

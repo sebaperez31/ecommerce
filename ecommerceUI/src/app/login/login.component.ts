@@ -10,10 +10,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   formulario:FormGroup;
-  errorLogeo:boolean;
+  errorLogeo:boolean = false;
 
   constructor(private fb:FormBuilder, private usuariosService:UsuariosService, private router:Router) {
-    this.errorLogeo = false;
     this.formulario = this.fb.group({
       email    : ['', [Validators.required, Validators.email]],
       password : ['', [Validators.required]]
@@ -31,7 +30,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
     },
       error => {
-        alert("Usuario y/o password incorrectos.");
         this.errorLogeo = true;
     });
   }
