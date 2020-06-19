@@ -1,0 +1,20 @@
+<mat-table [dataSource]="compras" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="fecha">
+    <mat-header-cell *matHeaderCellDef>Fecha</mat-header-cell>
+    <mat-cell *matCellDef="let compra"> {{compra.fecha | date}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="producto">
+    <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
+    <mat-cell *matCellDef="let compra"> {{compra.items[0].nombre}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="precio">
+    <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+    <mat-cell *matCellDef="let compra"> {{compra.total | currency}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
+</mat-table>

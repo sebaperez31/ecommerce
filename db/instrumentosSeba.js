@@ -164,6 +164,7 @@ function crearDB() {
         else {
             joseCreado = true;
             crearCompra();
+            crearCompra();
         }
     });
 
@@ -192,15 +193,19 @@ function crearDB() {
         if (bajoIbanezCreado && platillosCreados && joseCreado) {
             Compra.create({
                 fecha : "2015-04-23",
-                usuario : jose,
+                usuarioId : jose._id,
                 codigo_tienda : codigoInstrumentosSeba,
                 items : [ 
                     {
-                        producto : platillos,
+                        productoId : platillos._id,
+                        nombre : platillos.nombre,
+                        precio : platillos.precio,
                         cantidad : 1
                     }, 
                     {
-                        producto : bajoIbanez,
+                        productoId : bajoIbanez._id,
+                        nombre : bajoIbanez.nombre,
+                        precio : bajoIbanez.precio,
                         cantidad : 1
                     }
                 ],

@@ -1,0 +1,12 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.button-row {
+  display: table-cell;
+}
+
+.button-row button {
+  display: table-cell;
+  margin-right: 8px;
+}

@@ -10,6 +10,18 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProductosComponent } from './components/productos/productos.component';
+import { MatCardModule } from '@angular/material/card';
+import { ComprasComponent } from './compras/compras.component';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { CategoriasComponent } from './layout/categorias/categorias.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +31,26 @@ import { ProductoDetalleComponent } from './producto-detalle/producto-detalle.co
     LoginComponent,
     MenuComponent,
     ProductoComponent,
-    ProductoDetalleComponent
+    ProductoDetalleComponent,
+    ProductosComponent,
+    ComprasComponent,
+    CategoriasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatCardModule,
+    MatListModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

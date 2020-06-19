@@ -226,15 +226,19 @@ function crearDB() {
         if (vacioCreado && cervezaCreada && sebastianCreado) {
             let compra = new Compra;
             compra.fecha = "2012-04-23";
-            compra.usuario = sebastian;
+            compra.usuarioId = sebastian._id;
             compra.codigo_tienda = codigoSupermercadoLuchi;
             compra.items = [ 
                 {
-                    producto : cerveza,
+                    productoId : cerveza._id,
+                    nombre : cerveza.nombre,
+                    precio : cerveza.precio,
                     cantidad : 2
                 }, 
                 {
-                    producto : vacio,
+                    productoId : vacio._id,
+                    nombre : vacio.nombre,
+                    precio : vacio.precio,
                     cantidad : 1.5
                 }
             ];

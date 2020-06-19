@@ -1,5 +1,4 @@
 const CompraModel = require('../models/compraModel').CompraModel;
-const UsuarioModel = require('../models/usuarioModel').UsuarioModel;
 const ProductoModel = require('../models/productoModel').ProductoModel;
 
 async function getCompraFromBody(body){
@@ -11,14 +10,9 @@ async function getCompraFromBody(body){
     compra.forma_de_pago = body.forma_de_pago;
     compra.observaciones = body.observaciones;
     compra.codigo_tienda = body.codigo_tienda;
-    let [usuario, items] = await Promise.all([getUsuarioFromBody(body), getItemsFromBody(body)])
-    compra.usuario = usuario;
-    compra.items = items;
+    compra.usuarioId = body.usuario_id;
+    compra.items = await getItemsFromBody(body);
     return compra;
-}
-
-async function getUsuarioFromBody(body){
-    return await UsuarioModel.findById(body.usuario_id);
 }
 
 async function getItemsFromBody(body){
@@ -27,7 +21,9 @@ async function getItemsFromBody(body){
     let items = [];
     for (let producto of productos){
         items.push({
-            producto: producto,
+            productoId : producto._id,
+            nombre : producto.nombre,
+            precio : producto.precio,
 	        cantidad: body.items.find(item => item.producto_id == producto._id).cantidad
         });
     }
@@ -36,7 +32,14 @@ async function getItemsFromBody(body){
 
 module.exports = {
     getAll : async function(req, res, next) {
-        let compras = await CompraModel.find({});
+        busqueda = {};
+        if (req.query.codigo_tienda){
+            busqueda.codigo_tienda = req.query.codigo_tienda;
+        }
+        if (req.query.usuarioId){
+            busqueda.usuarioId = req.query.usuarioId;
+        }
+        let compras = await CompraModel.find(busqueda);
         res.json(compras);
     },
 

@@ -2,8 +2,18 @@ const TiendaModel = require('../models/tiendaModel').TiendaModel;
 
 module.exports = {
     getAll : async function(req, res, next) {
-        let tiendas = await TiendaModel.find({});
+        let busqueda = {};
+        if (req.query.codigo){
+            busqueda.codigo = req.query.codigo;
+        }
+        let tiendas = await TiendaModel.find(busqueda);
         res.json(tiendas);
+    },
+
+    getByCodigo : async function(req, res, next) {
+        let busqueda = { codigo : req.params.codigo };
+        let tienda = await TiendaModel.findOne(busqueda);
+        res.json(tienda);
     },
 
     getById : async function(req, res, next) {

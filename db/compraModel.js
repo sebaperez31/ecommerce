@@ -1,13 +1,11 @@
 var mongodb = require("./mongodb");
 
-var usuarioModel = require("./usuarioModel");
-var UsuarioSchema = usuarioModel.UsuarioSchema;
-var DireccionSchema = usuarioModel.DireccionSchema;
-
-var ProductoSchema = require("./productoModel").ProductoSchema;
+var DireccionSchema = require("./usuarioModel").DireccionSchema;
 
 var ItemSchema = mongodb.Schema({
-	producto: ProductoSchema,
+    productoId : { type : mongodb.Schema.ObjectId, ref : "productos" },
+    nombre : String,
+    precio : Number,
 	cantidad: Number
 });
 
@@ -16,7 +14,7 @@ var CompraSchema = mongodb.Schema({
         type: Date,
         default: Date.now
     },
-    usuario: UsuarioSchema,
+    usuarioId: { type : mongodb.Schema.ObjectId, ref : "usuarios" },
     items: [ItemSchema],
     direccion_de_entrega: DireccionSchema,
     forma_de_pago: String,

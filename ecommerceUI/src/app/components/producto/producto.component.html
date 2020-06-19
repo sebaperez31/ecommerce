@@ -1,2 +1,12 @@
-<div>{{producto.nombre}}</div>
-<button (click)=detalles()>Ver detalles</button>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{producto.nombre}}</mat-card-title>
+    <mat-card-subtitle>{{producto.precio | currency}}</mat-card-subtitle>
+  </mat-card-header>
+  <div *ngIf="imagen()">
+    <img mat-card-image [src]="imagen()">
+  </div>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)=detalles()>VER DETALLES</button>
+  </mat-card-actions>
+</mat-card>

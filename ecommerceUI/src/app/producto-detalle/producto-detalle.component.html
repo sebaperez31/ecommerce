@@ -1,8 +1,24 @@
-<div>{{producto.nombre}}</div>
-<div>{{producto.codigo}}</div>
-<div *ngIf="imagen">
-  <img src="{{imagen}}">
-<div>
-<div>{{producto.descripcion}}</div>
-<div>{{producto.precio | currency}}</div>
-<div>{{producto.nombre_categoria}} / {{producto.nombre_subcategoria}}</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{producto.nombre}}</mat-card-title>
+    <mat-card-subtitle>CATEGORIA: {{producto.nombre_categoria}} | {{producto.nombre_subcategoria}}</mat-card-subtitle>
+    <mat-card-subtitle>PRECIO: {{producto.precio | currency}}</mat-card-subtitle>
+    <mat-card-subtitle>CODIGO: {{producto.codigo}}</mat-card-subtitle>
+  </mat-card-header>
+  <div *ngIf="imagen">
+    <img mat-card-image src="{{imagen}}">
+  </div>
+  <mat-card-content>
+    <p>
+      {{producto.descripcion}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="comprar()" [disabled]="!isLogged()">COMPRAR</button>
+    <button mat-button color="primary" (click)="home()">VOLVER</button>
+  </mat-card-actions>
+  <div class="nologged" *ngIf="!isLogged()" >
+    <p>*Para adquirir este producto necesita estar registrado en la tienda</p>
+  </div>
+</mat-card>
+

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfigService } from 'src/app/services/config.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  nombreTienda:String;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private config:ConfigService,
+    private usuariosService:UsuariosService) {
+    this.config.buscarTienda().subscribe(tienda => this.nombreTienda = tienda['nombre']);
+  }
 
   ngOnInit() {
   }
@@ -22,7 +28,7 @@ export class MenuComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    this.usuariosService.logout();
     this.login();
   }
 
@@ -31,6 +37,10 @@ export class MenuComponent implements OnInit {
   }
 
   isLogged() {
-    return localStorage.getItem('token') != null;
+    return this.usuariosService.isLogged();
+  }
+
+  compras() {
+    this.router.navigate(['compras', 'usuario', this.usuariosService.getUsuarioId()]);
   }
 }

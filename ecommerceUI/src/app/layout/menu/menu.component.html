@@ -1,4 +1,14 @@
-<button (click)=home()>Home</button>
-<button (click)=login() *ngIf=!isLogged()>Login</button>
-<button (click)=logout() *ngIf=isLogged()>Logout</button>
-<button (click)=registro() *ngIf=!isLogged()>Registro</button>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button (click)=home()><mat-icon>home</mat-icon></button>
+    <span>{{nombreTienda}}</span>
+    <span class="spacer"></span>
+    <div class="button-row">
+      <button mat-raised-button (click)=compras() *ngIf=isLogged()>MIS COMPRAS</button>
+      <button mat-raised-button (click)=login() *ngIf=!isLogged()>INGRESAR</button>
+      <button mat-raised-button (click)=logout() *ngIf=isLogged()>SALIR</button>
+      <button mat-raised-button (click)=registro() *ngIf=!isLogged()>CREAR CUENTA</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+

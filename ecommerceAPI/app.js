@@ -42,10 +42,10 @@ app.options("/*", function(req, res, next){
 
 app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
-app.use('/productos', validarUsuario, productosRouter);
+app.use('/productos', productosRouter);
 app.use('/tiendas', tiendasRouter);
 app.use('/categorias', categoriasRouter);
-app.use('/compras', comprasRouter);
+app.use('/compras', validarUsuario, comprasRouter);
 
 // Validacion de user por token
 function validarUsuario(req,res,next){

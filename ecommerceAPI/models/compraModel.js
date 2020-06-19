@@ -1,12 +1,12 @@
 const mongoose = require("../bin/mongodb");
 const Schema = mongoose.Schema;
 
-var UsuarioSchema = require("./usuarioModel").UsuarioSchema;
 var DireccionSchema = require("./direccionModel").DireccionSchema;
-var ProductoSchema = require("./productoModel").ProductoSchema;
 
 var ItemSchema = Schema({
-	producto: ProductoSchema,
+    productoId : { type : Schema.ObjectId, ref : "productos" },
+    nombre : String,
+    precio : Number,
 	cantidad: Number
 });
 
@@ -15,7 +15,7 @@ var CompraSchema = Schema({
         type: Date,
         default: Date.now
     },
-    usuario: UsuarioSchema,
+    usuarioId : { type : Schema.ObjectId, ref : "usuarios" },
     items: [ItemSchema],
     direccion_de_entrega: DireccionSchema,
     forma_de_pago: String,
@@ -27,7 +27,7 @@ var CompraSchema = Schema({
 });
 
 CompraSchema.virtual('total').get(function(){
-    return this.items.reduce((total, item) => total + item.cantidad * item.producto.precio, 0);
+    return this.items.reduce((total, item) => total + item.cantidad * item.precio, 0);
 });
 
 CompraSchema.set('toJSON', {getters: true, virtuals: true});

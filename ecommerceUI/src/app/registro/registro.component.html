@@ -1,39 +1,33 @@
-<form [formGroup]="formulario" (ngSubmit)="registrar()">
-  <div>
-    <label>Nombre</label>
-    <input type="text" formControlName="nombre"/>
-  </div>
-  <div *ngIf="formulario.get('nombre').dirty && formulario.get('nombre').errors">
-    <p *ngIf="formulario.get('nombre').hasError('required')">El campo es obligatorio</p>
-  </div>
-  <div>
-    <label>Apellido</label>
-    <input type="text" formControlName="apellido"/>
-  </div>
-  <div *ngIf="formulario.get('apellido').dirty && formulario.get('apellido').errors">
-    <p *ngIf="formulario.get('apellido').hasError('required')">El campo es obligatorio</p>
-  </div>
-  <div>
-    <label>Email</label>
-    <input type="email" formControlName="email"/>
-  </div>
-  <div *ngIf="formulario.get('email').dirty && formulario.get('email').errors">
-    <p *ngIf="formulario.get('email').hasError('required')">El campo es obligatorio</p>
-    <p *ngIf="formulario.get('email').hasError('email')">El campo debe ser un correo electronico valido</p>
-  </div>
-  <div>
-    <label>Contraseña</label>
-    <input type="text" formControlName="password"/>
-  </div>
-  <div *ngIf="formulario.get('password').dirty && formulario.get('password').errors">
-    <p *ngIf="formulario.get('password').hasError('required')">El campo es obligatorio</p>
-  </div>
-  <div>
-    <label>Telefono</label>
-    <input type="text" formControlName="telefono"/>
-  </div>
-  <input [disabled]="formulario.invalid" type="submit" value="Registrarme"/>
-  <div *ngIf="mensajeError.length > 0">
-    <p>{{mensajeError}}</p>
- </div>
+<form class="example-form" [formGroup]="formulario" (ngSubmit)="registrar()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput type="text" formControlName="nombre">
+    <mat-hint align="end">El campo es obligatorio</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Apellido</mat-label>
+    <input matInput type="text" formControlName="apellido">
+    <mat-hint align="end">El campo es obligatorio</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" formControlName="email">
+    <mat-hint align="end">El campo debe ser un correo electronico valido</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input matInput type="text" formControlName="password">
+    <mat-hint align="end">El campo es obligatorio</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Telefono</mat-label>
+    <input matInput type="text" formControlName="telefono">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="formulario.invalid" type="submit">REGISTRARME</button>
+
 </form>

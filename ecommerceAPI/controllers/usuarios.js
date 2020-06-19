@@ -53,7 +53,7 @@ module.exports = {
         });
         if (usuario){
             var token = jwt.sign( { usuario : usuario }, "123456", { expiresIn: '1h' });
-            res.status(200).json( { message : "Login exitoso", token : token });
+            res.status(200).json( { message : "Login exitoso", token : token, usuarioId : usuario._id});
         }
         else{ 
             res.status(401).json({ message : "Usuario y/o password incorrecto", data : null});
