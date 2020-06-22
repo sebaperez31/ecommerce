@@ -85,6 +85,7 @@ function crearDB() {
         nombre_categoria : "Vientos",
         nombre_subcategoria : "Armonicas",
         imagenes : [{nombre:"images/hohnerMarineBand.jpg"}],
+        destacado : true,
         codigo_tienda: codigoInstrumentosSeba
     });
 
@@ -119,6 +120,7 @@ function crearDB() {
     bajoIbanez.stock = 3;
     bajoIbanez.nombre_categoria = "Bajos";
     bajoIbanez.nombre_subcategoria = "Electricos";
+    bajoIbanez.destacado = true;
     bajoIbanez.imagenes = [{nombre:"images/bajoIbanezTmb100.jpg"}];
     bajoIbanez.codigo_tienda = codigoInstrumentosSeba;
     var bajoIbanezCreado = false;

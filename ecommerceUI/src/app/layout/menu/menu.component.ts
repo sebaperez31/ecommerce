@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
 
   constructor(private router:Router, private config:ConfigService,
     private usuariosService:UsuariosService) {
-    this.config.buscarTienda().subscribe(tienda => this.nombreTienda = tienda['nombre']);
+    this.config.getTienda().subscribe(tienda => this.nombreTienda = tienda['nombre']);
   }
 
   ngOnInit() {

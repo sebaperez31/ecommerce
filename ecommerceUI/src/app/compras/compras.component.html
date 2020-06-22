@@ -1,3 +1,7 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Mis compras</mat-card-title>
+  </mat-card-header>
 <mat-table [dataSource]="compras" class="mat-elevation-z8">
 
   <ng-container matColumnDef="fecha">
@@ -18,3 +22,4 @@
   <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
   <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
 </mat-table>
+</mat-card>

@@ -11,6 +11,10 @@ const getAll = async function(req, res, next) {
     if (req.query.codigo_tienda){
         busqueda.codigo_tienda = req.query.codigo_tienda;
     }
+    if (req.query.categoria){
+        busqueda.nombre_categoria = req.query.categoria;
+    }
+    
     let productos = await ProductoModel.find(busqueda);
     res.json(productos);
 }

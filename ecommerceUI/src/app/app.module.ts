@@ -22,6 +22,7 @@ import { ComprasComponent } from './compras/compras.component';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { CategoriasComponent } from './layout/categorias/categorias.component';
+import { MatSidenavModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CategoriasComponent } from './layout/categorias/categorias.component';
     MatSnackBarModule,
     MatCardModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

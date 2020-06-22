@@ -1,3 +1,14 @@
-<p>
-  categorias works!
-</p>
+<mat-sidenav-container>
+  <mat-sidenav #drawer mode="side" opened role="navigation">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let categoria of categorias">
+        <a (click)=ir(categoria.nombre) matLine>
+          <span>{{categoria.nombre}}</span>
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

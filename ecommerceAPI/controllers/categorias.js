@@ -6,6 +6,9 @@ module.exports = {
         if (req.query.nombre){
             busqueda.nombre = req.query.nombre;
         }
+        if (req.query.codigo_tienda){
+            busqueda.codigo_tienda = req.query.codigo_tienda;
+        }
         let categorias = await CategoriaModel.find(busqueda);
         res.json(categorias);
     },

@@ -1,5 +1,10 @@
-<ul *ngIf="productos.length > 0">
-  <li *ngFor="let producto of productos">
-    <app-producto [producto]="producto"></app-producto>
-  </li>
-</ul>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Categoria: {{tipoProductos}}</mat-card-title>
+  </mat-card-header>
+  <ul *ngIf="productos.length > 0">
+    <li *ngFor="let producto of productos">
+      <app-producto [producto]="producto"></app-producto>
+    </li>
+  </ul>
+</mat-card>

@@ -1,3 +1,7 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Formulario de registro</mat-card-title>
+  </mat-card-header>
 <form class="example-form" [formGroup]="formulario" (ngSubmit)="registrar()">
   <mat-form-field class="example-full-width">
     <mat-label>Nombre</mat-label>
@@ -19,7 +23,7 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>Password</mat-label>
-    <input matInput type="text" formControlName="password">
+    <input matInput type="password" formControlName="password">
     <mat-hint align="end">El campo es obligatorio</mat-hint>
   </mat-form-field>
 
@@ -31,3 +35,4 @@
   <button mat-raised-button color="primary" [disabled]="formulario.invalid" type="submit">REGISTRARME</button>
 
 </form>
+</mat-card>

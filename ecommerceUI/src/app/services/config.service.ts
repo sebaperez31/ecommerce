@@ -8,21 +8,18 @@ export class ConfigService {
   readonly codigoTienda = 'T002';
   readonly apiUrl = 'http://localhost:3000/';
   private tienda;
+  private categorias;
 
-  buscarTienda() {
+  getTienda() {
     return this.http.get(this.apiUrl + 'tiendas/codigo/' + this.codigoTienda);
   }
 
-  constructor(private http:HttpClient) {
-    this.buscarTienda().subscribe(data => this.tienda = data);
+  getCategorias() {
+    return this.http.get(this.apiUrl + 'categorias',{
+      params : new HttpParams().set('codigo_tienda', this.codigoTienda)
+    });
   }
 
-  getTienda() {
-    if (this.tienda){
-      return Promise.resolve(this.tienda);
-    }
-    else {
-      return this.buscarTienda();
-    }
+  constructor(private http:HttpClient) {
   }
 }
